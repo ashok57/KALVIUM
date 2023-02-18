@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DragDrop</title>
+
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition-property: box-s;
+            
+
+        }
+        .container .element {
+            width: 80px;
+            height: 80px;
+            border-radius: 60;
+            margin: 9px;
+            box-shadow: 0 0 8px #50A7FF;
+            box-shadow: 0 0 8px #50A7FF;
+            box-shadow: 0 0 8px #50A7FF;
+            box-shadow: 0 0 8px #50A7FF;
+
+
+        }
+    </style>
+</head>
+<body onload="move('element')">
+    <div class = "container">
+        <div class ="element" style="background:  red;"></div>
+        <div class ="element" style="background:  pink;"></div>
+        <div class ="element" style="background:  blue;"></div>
+        <div class ="element" style="background:  brown;"></div>
+    </div>
+
+    <script>
+        var chooseElement;
+
+        const move = function(element){
+            const elements = document.querySelectorAll(".element")
+            elements.forEach(element =>{
+                element.addEventListener("mousedown",()=>{
+                    element.style.position= "absolute"
+                    chooseElement = element
+
+                    document.onmousemove = (e) => {
+                        var x = e.pageX 
+                        var y = e.pageY 
+
+
+                        chooseElement.style.left = x-56 + "px";
+                        chooseElement.style.top = y-56 + "px";
+
+                        console.log(chooseElement)
+
+
+
+                    }
+
+                })
+            })
+            document.onmouseup = function(e){
+                chooseElement = null
+                if('draggable' in document.createElement('span')) {
+                    alert("Drag-drop detected");
+                } 
+
+
+            }
+
+        }
+    </script>
+
+
+</body>
+</html>
