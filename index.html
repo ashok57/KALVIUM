@@ -10,7 +10,7 @@
         .container{
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end;
             cursor: pointer;
             transition-property: box-s;
             
@@ -25,18 +25,21 @@
             box-shadow: 0 0 8px #50A7FF;
             box-shadow: 0 0 8px #50A7FF;
             box-shadow: 0 0 8px #50A7FF;
+            
+            
 
-
+        
         }
     </style>
 </head>
-<body onload="move('element')">
-    <div class = "container">
-        <div class ="element" style="background:  red;"></div>
-        <div class ="element" style="background:  pink;"></div>
-        <div class ="element" style="background:  blue;"></div>
-        <div class ="element" style="background:  brown;"></div>
-    </div>
+<body onload="move('element')" >
+    <div ><div  class = "container">
+        <div  class="element"  style="background:  red;"></div>
+        <div class ="element"  style="background:  pink;"></div>
+        <div class ="element"  style="background:  blue;"></div>
+        <div class ="element"  style="background:  brown;"></div>
+    </div></div>
+    
 
     <script>
         var chooseElement;
@@ -51,30 +54,19 @@
                     document.onmousemove = (e) => {
                         var x = e.pageX 
                         var y = e.pageY 
-
-
                         chooseElement.style.left = x-56 + "px";
                         chooseElement.style.top = y-56 + "px";
-
                         console.log(chooseElement)
-
-
-
                     }
 
                 })
-            })
-            document.onmouseup = function(e){
-                chooseElement = null
-                if('draggable' in document.createElement('span')) {
+                element.onmouseup = () => {
+                    chooseElement = null;
                     alert("Drag-drop detected");
-                } 
-
-
-            }
-
-        }
-    </script>
+                }
+            })
+        }
+    </script>
 
 
 </body>
